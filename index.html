@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unity Ads — Gaming Playbook (June 2026) ▸ INSERT COIN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+
+  <script>window.NEWSLETTER_GA_ID = "";</script>
+  <script>
+    (function(){
+      var id = window.NEWSLETTER_GA_ID;
+      if (!id) return;
+      var s = document.createElement('script');
+      s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){ dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', id);
+    })();
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #11131a;
+      --bg2: #161922;
+      --panel: #181b24;
+      --panel-2: #1e222d;
+      --green: #6fcf97;
+      --green-dim: #3a6b50;
+      --magenta: #a98fe0;
+      --cyan: #6fb6cf;
+      --yellow: #d6b06a;
+      --orange: #cf9b6a;
+      --red: #cf7d7d;
+      --purple: #4a4f63;
+      --ink: #e6e8f0;
+      --muted: #8b91a6;
+      --grid: rgba(130,140,165,0.045);
+      --rail-w: 244px;
+      --content-max: 800px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'VT323', 'Courier New', monospace;
+      background: var(--bg);
+      background-image:
+        radial-gradient(circle at 15% 6%, rgba(111,207,151,0.05), transparent 45%),
+        radial-gradient(circle at 88% 0%, rgba(111,182,207,0.045), transparent 48%),
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: auto, auto, 44px 44px, 44px 44px;
+      color: var(--ink);
+      overflow-x: hidden;
+      font-size: 19px;
+      line-height: 1.45;
+      -webkit-font-smoothing: none;
+      image-rendering: pixelated;
+    }
+
+    /* ─── CRT SCANLINE OVERLAY ─── */
+    body::after {
+      content: "";
+      position: fixed; inset: 0;
+      pointer-events: none;
+      z-index: 999;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 0px,
+        rgba(0,0,0,0) 3px,
+        rgba(0,0,0,0.04) 4px,
+        rgba(0,0,0,0.04) 5px
+      );
+      mix-blend-mode: multiply;
+    }
+
+    /* pixel font helper */
+    .px { font-family: 'Press Start 2P', monospace; -webkit-font-smoothing: none; }
+
+    /* ─── TOP BAR (mobile) ─── */
+    #top-bar {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(13,2,33,0.94);
+      border-bottom: 3px solid var(--magenta);
+      box-shadow: 0 4px 0 rgba(0,0,0,0.5);
+      padding: 12px 14px 9px;
+    }
+    #top-progress-track { height: 10px; background: #20242f; border: 2px solid #2a2f3d; margin-bottom: 10px; image-rendering: pixelated; }
+    #top-progress-fill { height: 100%; width: 0%; background: var(--green); transition: width 0.2s steps(20); }
+    #chapter-pills { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
+    #chapter-pills::-webkit-scrollbar { display: none; }
+    .chapter-pill { flex-shrink: 0; font-family: 'Press Start 2P', monospace; font-size: 8px; padding: 7px 9px; background: #1e222d; border: 2px solid #2a2f3d; color: var(--cyan); text-decoration: none; }
+    .chapter-pill.active { background: var(--magenta); color: #fff; border-color: var(--magenta); }
+
+    /* ─── SHELL ─── */
+    #shell { display: flex; min-height: 100vh; }
+
+    /* ─── RAIL ─── */
+    #rail {
+      width: var(--rail-w);
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 26px 16px 40px;
+      display: flex;
+      flex-direction: column;
+      border-right: 3px solid var(--purple);
+      background: rgba(15,5,40,0.82);
+      scrollbar-width: thin;
+      scrollbar-color: var(--purple) transparent;
+    }
+    #rail::-webkit-scrollbar { width: 6px; }
+    #rail::-webkit-scrollbar-thumb { background: var(--purple); }
+
+    .rail-logo { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .rail-logo-dot { width: 11px; height: 11px; background: var(--green); box-shadow: 2px 2px 0 rgba(0,0,0,0.5); }
+    .rail-logo-text { font-family: 'Press Start 2P', monospace; font-size: 11px; color: var(--green); }
+    .rail-date { font-size: 16px; color: var(--muted); margin-left: auto; }
+
+    .rail-tag {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px; letter-spacing: 0.04em;
+      padding: 6px 8px; background: var(--magenta);
+      color: #fff; box-shadow: 3px 3px 0 #000; margin: 8px 0 16px;
+      display: inline-block;
+    }
+
+    .rail-hp-label { font-family:'Press Start 2P',monospace; font-size:7px; color:var(--muted); margin-bottom:5px; display:block; }
+    .rail-progress-track { height: 12px; background: #20242f; border: 2px solid #2a2f3d; margin-bottom: 22px; }
+    .rail-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--green), var(--cyan)); transition: width 0.3s steps(20); }
+
+    .rail-nav { display: flex; flex-direction: column; gap: 3px; }
+    .nav-item {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 8px;
+      text-decoration: none; transition: background 0.12s;
+      position: relative;
+      border: 2px solid transparent;
+    }
+    .nav-item:hover { background: rgba(130,140,165,0.08); }
+    .nav-item.active { background: rgba(169,143,224,0.12); border-color: var(--magenta); }
+    .nav-sel { font-family:'Press Start 2P',monospace; font-size: 9px; color: var(--magenta); opacity: 0; flex-shrink:0; width: 12px; }
+    .nav-item.active .nav-sel { opacity: 1; }
+    .nav-label { font-size: 18px; color: var(--muted); flex: 1; line-height:1.1; }
+    .nav-item:hover .nav-label { color: var(--ink); }
+    .nav-item.active .nav-label { color: var(--cyan); }
+    .nav-num { font-family:'Press Start 2P',monospace; font-size: 7px; color: var(--purple); }
+    .intro-item .nav-num { display: none; }
+
+    .rail-foot { margin-top: auto; padding-top: 20px; font-size: 15px; color: var(--muted); line-height: 1.5; }
+    .rail-foot .px { font-size: 7px; color: var(--green); display:block; margin-bottom:6px; }
+
+    /* ─── MAIN ─── */
+    #main { flex: 1; max-width: var(--content-max); margin: 0 auto; padding: 46px 36px 80px; }
+
+    /* ─── FADE UP ANIMATION ─── */
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.4s steps(6), transform 0.4s steps(6); }
+    .fade-up.in-view { opacity: 1; transform: none; }
+
+    /* ─── SECTION SPACING ─── */
+    section { padding-bottom: 76px; }
+    .section-label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px; letter-spacing: 0.04em;
+      color: var(--cyan);
+      padding-left: 12px; margin-bottom: 22px;
+      border-left: 4px solid var(--cyan);
+      display:inline-block; line-height:1.6;
+    }
+    h2.section-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 22px; line-height: 1.5;
+      color: var(--ink); margin-bottom: 14px;
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+    }
+    h2.section-title span { color: var(--magenta); }
+    .section-sub { font-size: 20px; color: var(--muted); line-height: 1.4; margin-bottom: 28px; max-width: 600px; }
+
+    /* ─── HERO ─── */
+    #hero { padding-top: 8px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px; letter-spacing: 0.03em;
+      color: var(--green); margin-bottom: 22px;
+    }
+    .hero-eyebrow-dot { width: 9px; height: 9px; background: var(--green); box-shadow: 2px 2px 0 rgba(0,0,0,0.5); }
+    .hero-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 38px; line-height: 1.35; color: var(--ink);
+      margin-bottom: 22px;
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+    }
+    .hero-title span { color: var(--green); }
+    .hero-title .mag { color: var(--magenta); }
+
+    .hero-grid { display: grid; grid-template-columns: 1fr 290px; gap: 20px; align-items: start; margin-bottom: 30px; }
+    .hero-art svg { width: 100%; display: block; box-shadow: 6px 6px 0 #000; }
+    .hero-perf {
+      background: var(--panel); border: 3px solid var(--green-dim);
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.45);
+      padding: 18px; display: flex; flex-direction: column; gap: 14px;
+    }
+    .hero-perf-top { display: flex; align-items: center; justify-content: space-between; }
+    .hero-perf-label { font-family:'Press Start 2P',monospace; font-size: 8px; color: var(--muted); }
+    .hero-perf-badge { font-family:'Press Start 2P',monospace; font-size: 7px; color: #04210a; background: var(--green); padding: 5px 7px; box-shadow: 2px 2px 0 #000; }
+    .hero-perf-3stat { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .hero-perf-3stat-item { background: var(--bg); border: 2px solid #2a2f3d; padding: 10px 6px; text-align: center; }
+    .hero-perf-3stat-val { font-size: 34px; line-height:1; color: var(--green); display: block; }
+    .hero-perf-3stat-lbl { font-family:'Press Start 2P',monospace; font-size: 6px; color: var(--muted); margin-top: 7px; display:block; line-height:1.5; }
+    .hero-perf-divider { border: none; border-top: 2px dashed #2a2f3d; }
+    .hero-perf-note { font-size: 17px; color: var(--muted); line-height: 1.35; }
+
+    .hero-body { font-size: 21px; line-height: 1.55; color: var(--ink); max-width: 640px; margin-bottom: 20px; }
+    .hero-body strong { color: var(--green); }
+
+    .press-start { font-family:'Press Start 2P',monospace; font-size: 11px; color: var(--yellow); animation: blink 1.8s steps(2) infinite; margin-bottom: 26px; }
+
+    @keyframes blink { 0%,60%{opacity:0.9;} 61%,100%{opacity:0.4;} }
+
+    /* ─── AT A GLANCE VISUAL GRID ─── */
+    .glance-visual-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .gv-card { background: var(--panel); border: 3px solid #2a2f3d; box-shadow: 5px 5px 0 #000; overflow: hidden; text-decoration: none; display: block; transition: transform 0.1s steps(2), box-shadow 0.1s steps(2), border-color 0.1s; }
+    .gv-card:hover { transform: translate(-3px,-3px); box-shadow: 8px 8px 0 var(--magenta); border-color: var(--magenta); }
+    .gv-thumb { height: 104px; overflow: hidden; border-bottom: 3px solid #2a2f3d; }
+    .gv-thumb svg { display: block; width: 100%; height: 100%; }
+    .gv-body { padding: 12px 13px 14px; }
+    .gv-num { font-family:'Press Start 2P',monospace; font-size: 7px; color: var(--purple); margin-bottom: 8px; }
+    .gv-title { font-size: 22px; line-height: 1.05; color: var(--ink); margin-bottom: 9px; }
+    .gv-badge { display: inline-block; font-family:'Press Start 2P',monospace; font-size: 7px; padding: 5px 7px; box-shadow: 2px 2px 0 #000; }
+    .badge-live { color: #04210a; background: var(--green); }
+    .badge-beta { color: #fff; background: var(--purple); }
+    .badge-alpha { color: #2a1500; background: var(--yellow); }
+    .badge-soon { color: #2a1500; background: var(--orange); }
+    .badge-new { color: #fff; background: var(--magenta); }
+    .badge-hot { color: #fff; background: var(--red); }
+    .badge-core { color: #001a1e; background: var(--cyan); }
+
+    /* ─── CARD BASE ─── */
+    .card {
+      background: var(--panel);
+      border: 3px solid #2a2f3d;
+      box-shadow: 5px 5px 0 #000;
+      padding: 22px 24px;
+      margin-bottom: 18px;
+    }
+    .card h3 { font-family:'Press Start 2P',monospace; font-size: 11px; color: var(--cyan); margin-bottom: 14px; line-height:1.5; }
+    .card p { font-size: 19px; line-height: 1.5; color: var(--ink); }
+    .card ul { font-size: 19px; color: var(--ink); line-height: 1.7; padding-left: 22px; }
+    .card ul li::marker { content: "▸ "; color: var(--green); }
+    .card em { color: var(--yellow); font-style: normal; }
+    .card strong { color: var(--green); }
+
+    /* ─── STAT CALLOUT ─── */
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0; }
+    .stat-box { background: var(--panel); border: 3px solid var(--green); box-shadow: 4px 4px 0 #000; padding: 16px 12px; text-align: center; }
+    .stat-box.cyan { border-color: var(--cyan); }
+    .stat-box.mag { border-color: var(--magenta); }
+    .stat-val { font-size: 44px; line-height: 0.9; color: var(--green); display: block; }
+    .stat-box.cyan .stat-val { color: var(--cyan); }
+    .stat-box.mag .stat-val { color: var(--magenta); }
+    .stat-lbl { font-family:'Press Start 2P',monospace; font-size: 7px; color: var(--muted); margin-top: 12px; display: block; line-height: 1.6; }
+
+    /* ─── GENRE / SUB CARD ─── */
+    .subvert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+    .subvert-card { background: var(--panel); border: 3px solid #2a2f3d; box-shadow: 4px 4px 0 #000; padding: 16px 18px; transition: border-color .12s, transform .1s steps(2); }
+    .subvert-card:hover { border-color: var(--cyan); transform: translate(-2px,-2px); }
+    .subvert-icon { font-size: 30px; margin-bottom: 10px; }
+    .subvert-title { font-family:'Press Start 2P',monospace; font-size: 11px; color: var(--ink); margin-bottom: 10px; line-height:1.4; }
+    .subvert-clients { font-size: 18px; color: var(--cyan); margin-bottom: 10px; }
+    .subvert-kpis { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+    .kpi-tag { font-family:'Press Start 2P',monospace; font-size: 7px; padding: 5px 7px; background: var(--bg); color: var(--green); border: 2px solid var(--green-dim); }
+    .subvert-note { font-size: 18px; color: var(--muted); line-height: 1.4; }
+
+    /* ─── CASE STUDY CARD ─── */
+    .case-study-card {
+      border-left: 6px solid var(--green);
+      padding: 16px 20px;
+      background: var(--panel);
+      box-shadow: 4px 4px 0 #000;
+      margin-bottom: 12px;
+    }
+    .case-study-card.cyan { border-left-color: var(--cyan); }
+    .case-study-card.mag { border-left-color: var(--magenta); }
+    .case-study-card.yellow { border-left-color: var(--yellow); }
+    .cs-name { font-family:'Press Start 2P',monospace; font-size: 11px; color: var(--ink); margin-bottom: 12px; line-height:1.5; }
+    .cs-metrics { font-size: 19px; color: var(--muted); line-height: 1.5; }
+    .cs-metrics strong { color: var(--green); }
+
+    /* ─── PRODUCT FIT TABLE ─── */
+    .fit-table { width: 100%; border-collapse: collapse; font-size: 17px; margin-top: 14px; }
+    .fit-table th { text-align: left; font-family:'Press Start 2P',monospace; font-size: 7px; color: var(--cyan); padding: 10px 8px; border-bottom: 3px solid var(--purple); line-height:1.5; }
+    .fit-table td { padding: 11px 8px; border-bottom: 2px solid #20242f; color: var(--ink); vertical-align: top; }
+    .fit-table tr:last-child td { border-bottom: none; }
+    .fit-table td strong { color: var(--ink); }
+    .fit-table td .sub { color: var(--muted); font-size: 15px; display:block; }
+    .fit-check { color: var(--green); }
+    .fit-partial { color: var(--yellow); }
+    .fit-gap { color: var(--red); }
+
+    /* ─── ALERT ─── */
+    .gap-alert { background: rgba(207,155,106,0.07); border: 3px solid var(--orange); box-shadow: 4px 4px 0 #000; padding: 14px 18px; margin-bottom: 12px; }
+    .gap-alert-title { font-family:'Press Start 2P',monospace; font-size: 9px; color: var(--orange); margin-bottom: 10px; line-height:1.5; }
+    .gap-alert-body { font-size: 18px; color: var(--ink); line-height: 1.45; }
+
+    /* ─── COMPETITOR CARD ─── */
+    .comp-card { background: rgba(207,125,125,0.07); border: 3px solid var(--red); box-shadow: 4px 4px 0 #000; padding: 15px 18px; margin-bottom: 11px; }
+    .comp-name { font-family:'Press Start 2P',monospace; font-size: 10px; color: var(--red); margin-bottom: 11px; line-height:1.5; }
+    .comp-detail { font-size: 18px; color: var(--ink); line-height: 1.45; }
+    .comp-detail strong { color: var(--yellow); }
+
+    /* ─── ROADMAP TIMELINE ─── */
+    .road-grid { display:grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: 16px; }
+    .road-q { background: var(--panel); border: 3px solid #2a2f3d; box-shadow:4px 4px 0 #000; padding: 14px 12px; }
+    .road-q.done { border-color: var(--green); }
+    .road-q.now { border-color: var(--magenta); }
+    .road-q-label { font-family:'Press Start 2P',monospace; font-size: 9px; color: var(--cyan); margin-bottom:4px; }
+    .road-q.done .road-q-label { color: var(--green); }
+    .road-q.now .road-q-label { color: var(--magenta); }
+    .road-q-status { font-family:'Press Start 2P',monospace; font-size: 6px; color: var(--muted); margin-bottom:12px; display:block; }
+    .road-q ul { list-style:none; font-size: 16px; line-height: 1.4; color: var(--ink); }
+    .road-q li { margin-bottom: 9px; padding-left: 14px; position:relative; }
+    .road-q li::before { content:"▸"; position:absolute; left:0; color: var(--green); }
+
+    /* ─── STAGE SYSTEM ─── */
+    .stage { display: none; }
+    .stage.active { display: block; }
+    .stage-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+    .stage-tab {
+      font-family:'Press Start 2P',monospace; font-size: 8px; padding: 8px 11px;
+      background: var(--bg); border: 2px solid #2a2f3d;
+      color: var(--muted); cursor: pointer; transition: all 0.1s;
+    }
+    .stage-tab:hover { color: var(--ink); }
+    .stage-tab.active { background: var(--magenta); color: #fff; border-color: var(--magenta); box-shadow: 2px 2px 0 #000; }
+
+    /* ─── CTA ─── */
+    #cta { text-align: center; padding: 36px 20px 56px; }
+    .cta-title { font-family:'Press Start 2P',monospace; font-size: 18px; color: var(--ink); margin-bottom: 16px; line-height:1.6; text-shadow:3px 3px 0 #000; }
+    .cta-sub { font-size: 20px; color: var(--muted); margin-bottom: 24px; }
+    .cta-sub strong { color: var(--cyan); }
+    .cta-btn {
+      display: inline-block; font-family:'Press Start 2P',monospace; font-size: 11px;
+      padding: 16px 26px; background: var(--green); color: #04210a;
+      text-decoration: none; box-shadow: 5px 5px 0 #000; transition: transform 0.1s steps(2), box-shadow 0.1s steps(2);
+    }
+    .cta-btn:hover { transform: translate(-3px,-3px); box-shadow: 8px 8px 0 var(--magenta); }
+
+    /* ─── FOOTER ─── */
+    #footer { padding: 30px 0 20px; border-top: 3px dashed var(--purple); text-align: center; }
+    .footer-tag { display: inline-block; font-family:'Press Start 2P',monospace; font-size: 8px; padding: 7px 11px; background: var(--magenta); color: #fff; box-shadow: 3px 3px 0 #000; margin-bottom: 16px; }
+    .footer-text { font-size: 17px; color: var(--muted); line-height: 1.7; }
+    .footer-text a { color: var(--green); text-decoration: none; }
+    .footer-text a:hover { color: var(--cyan); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      #rail { display: none; }
+      #top-bar { display: block; }
+      #main { padding: 78px 18px 60px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-perf { display: none; }
+      .hero-title { font-size: 26px; }
+      .glance-visual-grid { grid-template-columns: 1fr 1fr; }
+      .stat-row { grid-template-columns: 1fr; }
+      .subvert-grid { grid-template-columns: 1fr; }
+      .road-grid { grid-template-columns: 1fr 1fr; }
+      h2.section-title { font-size: 17px; }
+    }
+    @media (max-width: 480px) {
+      .glance-visual-grid { grid-template-columns: 1fr; }
+      .road-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 21px; }
+      body { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- MOBILE TOP BAR -->
+<div id="top-bar" aria-hidden="true">
+  <div id="top-progress-track"><div id="top-progress-fill"></div></div>
+  <div id="chapter-pills">
+    <a href="#hero" class="chapter-pill">Start</a>
+    <a href="#glance" class="chapter-pill">Map</a>
+    <a href="#roas" class="chapter-pill">01 ROAS</a>
+    <a href="#offerwall" class="chapter-pill">02 Offerwall</a>
+    <a href="#vector" class="chapter-pill">03 Vector</a>
+    <a href="#sdk" class="chapter-pill">04 SDK</a>
+    <a href="#genre" class="chapter-pill">05 Genres</a>
+    <a href="#roadmap" class="chapter-pill">06 Roadmap</a>
+    <a href="#competitor" class="chapter-pill">07 Bosses</a>
+  </div>
+</div>
+
+<div id="shell">
+  <!-- LEFT RAIL -->
+  <nav id="rail" aria-label="Chapter navigation">
+    <div class="rail-logo">
+      <div class="rail-logo-dot"></div>
+      <span class="rail-logo-text">UNITY ADS</span>
+      <span class="rail-date">JUN '26</span>
+    </div>
+    <span class="rail-tag">▸ GAMING</span>
+    <span class="rail-hp-label">PROGRESS</span>
+    <div class="rail-progress-track">
+      <div class="rail-progress-fill" id="rail-fill"></div>
+    </div>
+    <div class="rail-nav">
+      <a href="#hero" class="nav-item intro-item" data-section="hero">
+        <span class="nav-sel">►</span><span class="nav-label">Start screen</span>
+      </a>
+      <a href="#glance" class="nav-item intro-item" data-section="glance">
+        <span class="nav-sel">►</span><span class="nav-label">Level select</span>
+      </a>
+      <a href="#roas" class="nav-item" data-section="roas">
+        <span class="nav-sel">►</span><span class="nav-label">ROAS Campaigns</span><span class="nav-num">01</span>
+      </a>
+      <a href="#offerwall" class="nav-item" data-section="offerwall">
+        <span class="nav-sel">►</span><span class="nav-label">Offerwall & CPE</span><span class="nav-num">02</span>
+      </a>
+      <a href="#vector" class="nav-item" data-section="vector">
+        <span class="nav-sel">►</span><span class="nav-label">Vector & Forge</span><span class="nav-num">03</span>
+      </a>
+      <a href="#sdk" class="nav-item" data-section="sdk">
+        <span class="nav-sel">►</span><span class="nav-label">Bold SDK</span><span class="nav-num">04</span>
+      </a>
+      <a href="#genre" class="nav-item" data-section="genre">
+        <span class="nav-sel">►</span><span class="nav-label">Genre Playbook</span><span class="nav-num">05</span>
+      </a>
+      <a href="#roadmap" class="nav-item" data-section="roadmap">
+        <span class="nav-sel">►</span><span class="nav-label">Roadmap 2026</span><span class="nav-num">06</span>
+      </a>
+      <a href="#competitor" class="nav-item" data-section="competitor">
+        <span class="nav-sel">►</span><span class="nav-label">Boss Fights</span><span class="nav-num">07</span>
+      </a>
+    </div>
+    <div class="rail-foot">
+      <span class="px">1UP</span>
+      Built for the Unity Ads gaming squad. Drop intel in #games-ad-monetization.
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main id="main">
+
+    <!-- ═══ HERO ═══ -->
+    <section id="hero">
+      <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>GAMING VERTICAL PLAYBOOK · JUNE 2026</div>
+      <h1 class="hero-title">PRESS START<br>TO <span>SCALE</span> THE<br><span class="mag">GAME.</span></h1>
+
+      <div class="hero-grid">
+        <div class="hero-art">
+          <svg viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Retro arcade gaming monetization scene" shape-rendering="crispEdges">
+            <rect width="600" height="240" fill="#181b24"/>
+            <!-- starfield -->
+            <rect x="40" y="30" width="4" height="4" fill="#fff"/><rect x="120" y="60" width="4" height="4" fill="#6fb6cf"/>
+            <rect x="220" y="24" width="4" height="4" fill="#fff"/><rect x="300" y="50" width="4" height="4" fill="#a98fe0"/>
+            <rect x="400" y="34" width="4" height="4" fill="#fff"/><rect x="520" y="64" width="4" height="4" fill="#6fcf97"/>
+            <rect x="560" y="28" width="4" height="4" fill="#fff"/><rect x="80" y="90" width="4" height="4" fill="#d6b06a"/>
+            <!-- ground grid -->
+            <rect x="0" y="186" width="600" height="54" fill="#1e222d"/>
+            <rect x="0" y="186" width="600" height="3" fill="#6d6f86"/>
+            <line x1="60" y1="189" x2="-40" y2="240" stroke="#2a2f3d" stroke-width="2"/>
+            <line x1="180" y1="189" x2="140" y2="240" stroke="#2a2f3d" stroke-width="2"/>
+            <line x1="300" y1="189" x2="300" y2="240" stroke="#2a2f3d" stroke-width="2"/>
+            <line x1="420" y1="189" x2="460" y2="240" stroke="#2a2f3d" stroke-width="2"/>
+            <line x1="540" y1="189" x2="640" y2="240" stroke="#2a2f3d" stroke-width="2"/>
+            <!-- ascending ROAS bars (coins) -->
+            <rect x="70" y="150" width="40" height="36" fill="#6fcf97"/>
+            <rect x="124" y="120" width="40" height="66" fill="#6fcf97"/>
+            <rect x="178" y="92" width="40" height="94" fill="#6fcf97"/>
+            <rect x="232" y="64" width="40" height="122" fill="#6fcf97"/>
+            <!-- coin sprites floating -->
+            <rect x="300" y="70" width="28" height="28" fill="#d6b06a"/><rect x="306" y="76" width="16" height="16" fill="#cf9b6a"/>
+            <text x="313" y="90" font-family="'Press Start 2P',monospace" font-size="11" fill="#d6b06a" text-anchor="middle">$</text>
+            <!-- pixel rocket / ship -->
+            <rect x="400" y="96" width="44" height="20" fill="#6fb6cf"/>
+            <rect x="444" y="102" width="14" height="8" fill="#6fb6cf"/>
+            <rect x="388" y="100" width="12" height="12" fill="#cf9b6a"/>
+            <rect x="378" y="103" width="10" height="6" fill="#cf7d7d"/>
+            <!-- D28 label -->
+            <rect x="486" y="84" width="86" height="46" fill="#11131a" stroke="#6fcf97" stroke-width="2"/>
+            <text x="529" y="104" font-family="'Press Start 2P',monospace" font-size="8" fill="#6fcf97" text-anchor="middle">D28</text>
+            <text x="529" y="120" font-family="'Press Start 2P',monospace" font-size="8" fill="#6fcf97" text-anchor="middle">ROAS</text>
+            <!-- HUD top -->
+            <text x="20" y="30" font-family="'Press Start 2P',monospace" font-size="9" fill="#a98fe0">VECTOR AI</text>
+            <text x="580" y="30" font-family="'Press Start 2P',monospace" font-size="9" fill="#6fb6cf" text-anchor="end">HI-SCORE</text>
+          </svg>
+        </div>
+        <aside class="hero-perf">
+          <div class="hero-perf-top">
+            <span class="hero-perf-label">PLAYER STATS</span>
+            <span class="hero-perf-badge">▲ VECTOR ON</span>
+          </div>
+          <div class="hero-perf-3stat">
+            <div class="hero-perf-3stat-item">
+              <span class="hero-perf-3stat-val">D28</span>
+              <span class="hero-perf-3stat-lbl">IAP ROAS LIVE</span>
+            </div>
+            <div class="hero-perf-3stat-item">
+              <span class="hero-perf-3stat-val">5x</span>
+              <span class="hero-perf-3stat-lbl">FASTER SDK INIT</span>
+            </div>
+            <div class="hero-perf-3stat-item">
+              <span class="hero-perf-3stat-val">0</span>
+              <span class="hero-perf-3stat-lbl">CPI GATE</span>
+            </div>
+          </div>
+          <hr class="hero-perf-divider">
+          <p class="hero-perf-note">Project Forge complete · Unity Ads + Vector AI + LevelPlay + Tapjoy · June 2026.</p>
+        </aside>
+      </div>
+
+      <div class="press-start">▸ INSERT COIN — PRESS START</div>
+
+      <p class="hero-body fade-up">This is the field manual for the <strong>Unity Ads gaming vertical</strong>. After Project Forge, demand runs entirely on <strong>Unity Vector AI</strong> — IAP, ad-revenue and hybrid ROAS, plus Tapjoy Offerwall CPE. This playbook arms account managers and CSMs with the campaign types, the KPIs, the new Bold SDK, the genre fit map, the 2026 roadmap, and the competitors gunning for our clients. Use it before every gaming call.</p>
+    </section>
+
+    <!-- ═══ AT A GLANCE ═══ -->
+    <section id="glance">
+      <p class="section-label">LEVEL SELECT</p>
+      <h2 class="section-title">7 LEVELS TO<br><span>CLEAR.</span></h2>
+      <p class="section-sub">Pick your level. Click any cartridge to warp to the full section.</p>
+
+      <div class="glance-visual-grid">
+
+        <!-- 01 ROAS -->
+        <a href="#roas" class="gv-card fade-up">
+          <div class="gv-thumb">
+            <svg viewBox="0 0 240 104" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+              <rect width="240" height="104" fill="#11131a"/>
+              <rect x="24" y="64" width="26" height="28" fill="#6fcf97"/>
+              <rect x="60" y="50" width="26" height="42" fill="#6fcf97"/>
+              <rect x="96" y="34" width="26" height="58" fill="#6fcf97"/>
+              <rect x="132" y="22" width="26" height="70" fill="#6fcf97"/>
+              <rect x="168" y="12" width="26" height="80" fill="#6fcf97"/>
+              <text x="120" y="100" font-family="'Press Start 2P',monospace" font-size="8" fill="#6fcf97" text-anchor="middle">D7 / D28 ROAS</text>
+            </svg>
+          </div>
+          <div class="gv-body">
+            <div class="gv-num">LEVEL 01</div>
+            <div class="gv-title">ROAS Campaigns</div>
+            <span class="gv-badge badge-core">CORE</span>
+          </div>
+        </a>
+
+        <!-- 02 Offerwall -->
+        <a href="#offerwall" class="gv-card fade-up">
+          <div class="gv-thumb">
+            <svg viewBox="0 0 240 104" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+              <rect width="240" height="104" fill="#161922"/>
+              <rect x="30" y="24" width="48" height="20" fill="#a98fe0"/>
+              <rect x="86" y="24" width="48" height="20" fill="#a98fe0"/>
+              <rect x="142" y="24" width="48" height="20" fill="#a98fe0"/>
+              <rect x="30" y="52" width="48" height="20" fill="#6d6f86"/>
+              <rect x="86" y="52" width="48" height="20" fill="#6d6f86"/>
+              <rect x="142" y="52" width="48" height="20" fill="#6d6f86"/>
+              <rect x="100" y="80" width="40" height="16" fill="#d6b06a"/>
+              <text x="120" y="93" font-family="'Press Start 2P',monospace" font-size="7" fill="#2a1500" text-anchor="middle">REWARD</text>
+            </svg>
+          </div>
+          <div class="gv-body">
+            <div class="gv-num">LEVEL 02</div>
+            <div class="gv-title">Offerwall & CPE</div>
+            <span class="gv-badge badge-live">Tapjoy</span>
+          </div>
+        </a>
+
+        <!-- 03 Vector -->
+        <a href="#vector" class="gv-card fade-up">
+          <div class="gv-thumb">
+            <svg viewBox="0 0 240 104" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+              <rect width="240" height="104" fill="#11131a"/>
+              <rect x="100" y="34" width="40" height="40" fill="#6fb6cf"/>
+              <rect x="112" y="46" width="16" height="16" fill="#11131a"/>
+              <line x1="60" y1="30" x2="100" y2="50" stroke="#6fcf97" stroke-width="3"/>
+              <line x1="60" y1="74" x2="100" y2="58" stroke="#6fcf97" stroke-width="3"/>
+              <line x1="180" y1="30" x2="140" y2="50" stroke="#a98fe0" stroke-width="3"/>
+              <line x1="180" y1="74" x2="140" y2="58" stroke="#a98fe0" stroke-width="3"/>
+              <rect x="46" y="24" width="14" height="14" fill="#6fcf97"/><rect x="46" y="68" width="14" height="14" fill="#6fcf97"/>
+              <rect x="180" y="24" width="14" height="14" fill="#a98fe0"/><rect x="180" y="68" width="14" height="14" fill="#a98fe0"/>
+              <text x="120" y="98" font-family="'Press Start 2P',monospace" font-size="8" fill="#6fb6cf" text-anchor="middle">VECTOR AI</text>
+            </svg>
+          </div>
+          <div class="gv-body">
+            <div class="gv-num">LEVEL 03</div>
+            <div class="gv-title">Vector & Forge</div>
+            <span class="gv-badge badge-new">Engine</span>
+          </div>
+        </a>
+
+        <!-- 04 SDK -->
+        <a href="#sdk" class="gv-card fade-up">
+          <div class="gv-thumb">
+            <svg viewBox="0 0 240 104" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+              <rect width="240" height="104" fill="#161922"/>
+              <rect x="40" y="40" width="20" height="20" fill="#cf9b6a"/>
+              <rect x="64" y="40" width="20" height="20" fill="#cf9b6a"/>
+              <rect x="88" y="40" width="20" height="20" fill="#d6b06a"/>
+              <rect x="112" y="40" width="20" height="20" fill="#6fcf97"/>
+              <rect x="136" y="40" width="20" height="20" fill="#6fcf97"/>
+              <rect x="160" y="40" width="20" height="20" fill="#6fcf97"/>
+              <rect x="184" y="40" width="14" height="20" fill="#6fcf97"/>
+              <text x="120" y="80" font-family="'Press Start 2P',monospace" font-size="8" fill="#6fcf97" text-anchor="middle">v4.17.1</text>
+              <text x="120" y="96" font-family="'Press Start 2P',monospace" font-size="7" fill="#8b91a6" text-anchor="middle">5x FASTER</text>
+            </svg>
+          </div>
+          <div class="gv-body">
+            <div class="gv-num">LEVEL 04</div>
+            <div class="gv-title">Bold SDK</div>
+            <span class="gv-badge badge-live">Upgrade</span>
+          </div>
+        </a>
+
+        <!-- 05 Genres -->
+        <a href="#genre" class="gv-card fade-up">
+          <div class="gv-thumb">
+            <svg viewBox="0 0 240 104" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+              <rect width="240" height="104" fill="#11131a"/>
+              <rect x="36" y="36" width="32" height="32" fill="#a98fe0"/>
+              <rect x="44" y="44" width="16" height="16" fill="#11131a"/>
+              <rect x="104" y="36" width="32" height="32" fill="#6fb6cf"/>
+              <rect x="104" y="44" width="32" height="8" fill="#11131a"/>
+              <rect x="172" y="36" width="32" height="32" fill="#d6b06a"/>
+              <rect x="180" y="36" width="16" height="32" fill="#11131a"/>
+              <text x="120" y="92" font-family="'Press Start 2P',monospace" font-size="7" fill="#8b91a6" text-anchor="middle">HYBRID·RPG·HC</text>
+            </svg>
+          </div>
+          <div class="gv-body">
+            <div class="gv-num">LEVEL 05</div>
+            <div class="gv-title">Genre Playbook</div>
+            <span class="gv-badge badge-core">Reference</span>
+          </div>
+        </a>
+
+        <!-- 06 Roadmap -->
+        <a href="#roadmap" class="gv-card fade-up">
+          <div class="gv-thumb">
+            <svg viewBox="0 0 240 104" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+              <rect width="240" height="104" fill="#161922"/>
+              <rect x="20" y="50" width="200" height="6" fill="#2a2f3d"/>
+              <rect x="36" y="44" width="16" height="16" fill="#6fcf97"/>
+              <rect x="92" y="44" width="16" height="16" fill="#6fcf97"/>
+              <rect x="148" y="44" width="16" height="16" fill="#a98fe0"/>
+              <rect x="200" y="44" width="16" height="16" fill="#2a2f3d"/>
+              <text x="44" y="80" font-family="'Press Start 2P',monospace" font-size="7" fill="#6fcf97" text-anchor="middle">Q1</text>
+              <text x="100" y="80" font-family="'Press Start 2P',monospace" font-size="7" fill="#6fcf97" text-anchor="middle">Q2</text>
+              <text x="156" y="80" font-family="'Press Start 2P',monospace" font-size="7" fill="#a98fe0" text-anchor="middle">Q3</text>
+              <text x="208" y="80" font-family="'Press Start 2P',monospace" font-size="7" fill="#8b91a6" text-anchor="middle">Q4</text>
+            </svg>
+          </div>
+          <div class="gv-body">
+            <div class="gv-num">LEVEL 06</div>
+            <div class="gv-title">Roadmap 2026</div>
+            <span class="gv-badge badge-alpha">Alpha</span>
+          </div>
+        </a>
+
+        <!-- 07 Competitors -->
+        <a href="#competitor" class="gv-card fade-up">
+          <div class="gv-thumb">
+            <svg viewBox="0 0 240 104" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+              <rect width="240" height="104" fill="#11131a"/>
+              <!-- pixel boss skull -->
+              <rect x="92" y="26" width="56" height="44" fill="#cf7d7d"/>
+              <rect x="92" y="70" width="14" height="12" fill="#cf7d7d"/>
+              <rect x="116" y="70" width="14" height="12" fill="#cf7d7d"/>
+              <rect x="134" y="70" width="14" height="12" fill="#cf7d7d"/>
+              <rect x="104" y="40" width="12" height="14" fill="#11131a"/>
+              <rect x="124" y="40" width="12" height="14" fill="#11131a"/>
+              <text x="120" y="98" font-family="'Press Start 2P',monospace" font-size="7" fill="#cf7d7d" text-anchor="middle">BOSS FIGHT</text>
+            </svg>
+          </div>
+          <div class="gv-body">
+            <div class="gv-num">LEVEL 07</div>
+            <div class="gv-title">Boss Fights</div>
+            <span class="gv-badge badge-hot">Alert</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ═══ 01 ROAS ═══ -->
+    <section id="roas">
+      <p class="section-label">LEVEL 01 · ROAS CAMPAIGNS</p>
+      <h2 class="section-title">THE MAIN<br><span>QUEST.</span></h2>
+      <p class="section-sub">ROAS optimization is the core loop of the gaming vertical. Vector AI bids to return on ad spend across IAP, ad revenue, and hybrid — pick the window that matches the client's monetization.</p>
+
+      <div class="stat-row fade-up">
+        <div class="stat-box">
+          <span class="stat-val">D7+D28</span>
+          <span class="stat-lbl">RUN BOTH WINDOWS — BEST PRACTICE</span>
+        </div>
+        <div class="stat-box cyan">
+          <span class="stat-val">&gt;75</span>
+          <span class="stat-lbl">D7 PURCHASERS TO EXIT LEARNING (IAP)</span>
+        </div>
+        <div class="stat-box mag">
+          <span class="stat-val">NO</span>
+          <span class="stat-lbl">CPI WARM-UP REQUIRED ANYMORE</span>
+        </div>
+      </div>
+
+      <div class="card fade-up">
+        <div class="stage-tabs">
+          <span class="stage-tab active" onclick="switchTab(this,'roas-types')">Campaign types</span>
+          <span class="stage-tab" onclick="switchTab(this,'roas-learning')">Learning phase</span>
+          <span class="stage-tab" onclick="switchTab(this,'roas-pitch')">How to pitch</span>
+        </div>
+        <div id="roas-types" class="stage active">
+          <p><strong>IAP D7 / D28 ROAS</strong> — optimizes return from in-app purchases over the 7- or 28-day window. D7 catches fast monetizers; D28 matches higher long-term value. Run <em>both concurrently</em> for best game-level performance.<br><br>
+          <strong>Ad Revenue D0 / D7 ROAS</strong> — bids to ad-revenue returns from acquired players (D28 in alpha). Built for IAA / hybrid-casual titles.<br><br>
+          <strong>Hybrid D7 ROAS</strong> (live; D28 alpha) — optimizes IAP + ad revenue simultaneously. The default for modern hybrid titles where both revenue streams matter.</p>
+        </div>
+        <div id="roas-learning" class="stage">
+          <p>Learning is now measured at the <strong>Game ID level</strong> across all targeted geos — not per country. Once a game banks enough total data, every ROAS campaign of that type flips to <em>Live</em> at once. 90-day volume thresholds:</p>
+          <ul style="margin-top:12px;">
+            <li><strong>IAP D7:</strong> &gt;75 unique D7 purchasers</li>
+            <li><strong>Ad Revenue D0 / D7:</strong> &gt;1,000 installs and &gt;$0 ad revenue</li>
+            <li><strong>Hybrid D7:</strong> &gt;1,000 installs, &gt;$0 ad revenue (D7), &gt;35 unique D7 purchasers</li>
+          </ul>
+        </div>
+        <div id="roas-pitch" class="stage">
+          <p>Lead with: <em>"You can launch ROAS from day one — no CPI warm-up burning budget, and learning completes at the game level so all geos go live together."</em> Then match the window to their model: pure IAP → D7+D28 IAP; ad-monetized hyper/hybrid-casual → Ad Revenue D0/D7; modern hybrid → Hybrid D7. Confirm MMP is clean first (see Level 03).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 02 OFFERWALL ═══ -->
+    <section id="offerwall">
+      <p class="section-label">LEVEL 02 · OFFERWALL & CPE</p>
+      <h2 class="section-title">BONUS<br><span>ROUNDS.</span></h2>
+      <p class="section-sub">Tapjoy Offerwall runs cost-per-engagement campaigns that reward players for completing actions — a second acquisition engine alongside ROAS, tuned to in-game milestones.</p>
+
+      <div class="subvert-grid fade-up">
+        <div class="subvert-card">
+          <div class="subvert-icon">💰</div>
+          <div class="subvert-title">CPE Payer</div>
+          <div class="subvert-clients">Closed beta</div>
+          <div class="subvert-kpis"><span class="kpi-tag">FIRST PURCHASE</span><span class="kpi-tag">PAYER RATE</span></div>
+          <p class="subvert-note">Bids to acquire users who will make an in-game purchase. Best for IAP-led titles wanting payer volume off the wall.</p>
+        </div>
+        <div class="subvert-card">
+          <div class="subvert-icon">🔁</div>
+          <div class="subvert-title">CPE Retention</div>
+          <div class="subvert-clients">Live (Q2 updates)</div>
+          <div class="subvert-kpis"><span class="kpi-tag">D-N RETENTION</span><span class="kpi-tag">ENGAGED USERS</span></div>
+          <p class="subvert-note">Optimizes bids against a post-install retention benchmark. Cleanest signal for games chasing sticky, returning players.</p>
+        </div>
+        <div class="subvert-card">
+          <div class="subvert-icon">📅</div>
+          <div class="subvert-title">Daily Rewards</div>
+          <div class="subvert-clients">Live</div>
+          <div class="subvert-kpis"><span class="kpi-tag">MULTI-DAY</span><span class="kpi-tag">HABIT LOOP</span></div>
+          <p class="subvert-note">Rewards players across multiple days. Drives habit formation — pair with retention goals for live-ops-heavy titles.</p>
+        </div>
+        <div class="subvert-card">
+          <div class="subvert-icon">🎯</div>
+          <div class="subvert-title">CPE Custom-Event</div>
+          <div class="subvert-clients">Q3 2026 · Alpha</div>
+          <div class="subvert-kpis"><span class="kpi-tag">ANY EVENT</span><span class="kpi-tag">TUTORIAL · LVL</span></div>
+          <p class="subvert-note">Optimize to any custom in-game event (tutorial complete, level N, FTUE). Coming in Q3 — flag interested clients now.</p>
+        </div>
+      </div>
+
+      <div class="card fade-up" style="margin-top:18px;">
+        <h3>Offerwall pitch checklist</h3>
+        <ul>
+          <li>Single / Multi / Daily reward configs — match to the action you want rewarded</li>
+          <li>Use <strong>True Impressions</strong> + Conversions as the wall's core reporting KPIs</li>
+          <li>Retention beats raw installs for live-service games — lead with CPE Retention</li>
+          <li>Stack offerwall on top of ROAS, don't replace it — different demand, different intent</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══ 03 VECTOR & FORGE ═══ -->
+    <section id="vector">
+      <p class="section-label">LEVEL 03 · VECTOR & PROJECT FORGE</p>
+      <h2 class="section-title">THE GAME<br><span>ENGINE.</span></h2>
+      <p class="section-sub">Everything now runs on one engine. In early 2026 Project Forge sunset the ironSource Ads direct demand network — demand is fully consolidated on Unity Ads powered by Vector AI, LevelPlay mediation, and Tapjoy.</p>
+
+      <div class="card fade-up">
+        <h3>What Vector AI does</h3>
+        <p>Vector is the machine-learning matching engine at the core of every UA campaign. It reads <strong>player behavioral signals</strong> and matches users across IAP, IAA, and hybrid models — the same brain optimizing ROAS bids, creative cold-start, and multi-country budgets. When you sell "Unity Ads," you're selling Vector.</p>
+      </div>
+
+      <div class="case-study-card cyan fade-up">
+        <div class="cs-name">Project Forge — what changed</div>
+        <div class="cs-metrics">ironSource Ads direct demand network <strong>sunset</strong>. One demand stack: Unity Ads + Vector. One mediation: LevelPlay. One offerwall: Tapjoy. Cleaner story for clients, no more "which network?" confusion — but expect questions from ex-ironSource accounts about migration.</div>
+      </div>
+
+      <div class="gap-alert fade-up">
+        <div class="gap-alert-title">⚠ MMP VALIDATION IS NOW ENFORCED</div>
+        <div class="gap-alert-body">The ROAS onboarding flow auto-checks MMP config. <strong>P0 (critical) errors</strong> — mismatched Game IDs, postback windows under 180 days, wrong event mappings — block the campaign from going live. Since <strong>April 9, 2026</strong>, AppsFlyer clients failing P0 validation cannot launch until they fix setup. Always validate MMP before promising a launch date. P1 rules (share unattributed + organic data) are recommended, not blocking.</div>
+      </div>
+    </section>
+
+    <!-- ═══ 04 BOLD SDK ═══ -->
+    <section id="sdk">
+      <p class="section-label">LEVEL 04 · BOLD SDK</p>
+      <h2 class="section-title">POWER-UP<br><span>PATCH.</span></h2>
+      <p class="section-sub">"Bold" is Unity's rebuilt ad-delivery framework, designed from the ground up for mediation and header bidding. The upgrade is a free performance power-up — push every client to it.</p>
+
+      <div class="stat-row fade-up">
+        <div class="stat-box">
+          <span class="stat-val">5x</span>
+          <span class="stat-lbl">FASTER INIT · P95 2.37s · ~46% FASTER</span>
+        </div>
+        <div class="stat-box cyan">
+          <span class="stat-val">~91%</span>
+          <span class="stat-lbl">LOAD ERROR RATE DROP → 1%</span>
+        </div>
+        <div class="stat-box mag">
+          <span class="stat-val">~35%</span>
+          <span class="stat-lbl">SHOW ERROR RATE DROP → 2%</span>
+        </div>
+      </div>
+
+      <div class="card fade-up">
+        <h3>Upgrade cheat-sheet</h3>
+        <ul>
+          <li>Recommend <strong>SDK 4.17.0+</strong> — preferably <strong>4.17.1</strong></li>
+          <li><strong>iOS / StoreKit 2:</strong> pair latest Ads SDK with <strong>IAP Plugin 5.0.4</strong> for clean purchase signals feeding Vector</li>
+          <li><strong>Android low-memory:</strong> 4.16.6+ ships the OOM crash stability fix — upgrade any client reporting low-mem crashes</li>
+          <li><strong>OM SDK</strong> support enables viewability metrics → qualifies inventory for premium brand demand</li>
+        </ul>
+      </div>
+      <div class="card fade-up">
+        <p>Clean purchase signals are not cosmetic — they directly feed Vector's optimization. A client on an old SDK with a broken StoreKit pairing is starving the algorithm. <em>SDK upgrade = better ROAS.</em> That's the one-line pitch.</p>
+      </div>
+    </section>
+
+    <!-- ═══ 05 GENRE PLAYBOOK ═══ -->
+    <section id="genre">
+      <p class="section-label">LEVEL 05 · GENRE PLAYBOOK</p>
+      <h2 class="section-title">PICK YOUR<br><span>CHARACTER.</span></h2>
+      <p class="section-sub">Different genres monetize differently — so the right product mix changes per client. Quick reference, then real accounts in play.</p>
+
+      <div class="card fade-up">
+        <table class="fit-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Hybrid-casual</th>
+              <th>Midcore / RPG</th>
+              <th>Hyper-casual</th>
+              <th>Strategy / 4X</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>IAP D7/D28 ROAS</strong><span class="sub">Purchases</span></td>
+              <td><span class="fit-partial">Partial</span><span class="sub">Some IAP depth</span></td>
+              <td><span class="fit-check">✓ Strong</span><span class="sub">Deep payer LTV</span></td>
+              <td><span class="fit-gap">✗ Weak</span><span class="sub">Little IAP</span></td>
+              <td><span class="fit-check">✓ Strong</span><span class="sub">Whales, D28</span></td>
+            </tr>
+            <tr>
+              <td><strong>Ad Revenue ROAS</strong><span class="sub">D0 / D7</span></td>
+              <td><span class="fit-check">✓ Strong</span><span class="sub">IAA core</span></td>
+              <td><span class="fit-partial">Partial</span><span class="sub">Secondary</span></td>
+              <td><span class="fit-check">✓ Strong</span><span class="sub">Pure IAA</span></td>
+              <td><span class="fit-partial">Partial</span><span class="sub">Low ad load</span></td>
+            </tr>
+            <tr>
+              <td><strong>Hybrid ROAS</strong><span class="sub">IAP + ads</span></td>
+              <td><span class="fit-check">✓ Best fit</span><span class="sub">Both streams</span></td>
+              <td><span class="fit-check">✓ Strong</span><span class="sub">If hybrid mon.</span></td>
+              <td><span class="fit-partial">Partial</span><span class="sub">If any IAP</span></td>
+              <td><span class="fit-partial">Partial</span><span class="sub">IAP-led usually</span></td>
+            </tr>
+            <tr>
+              <td><strong>Offerwall CPE</strong><span class="sub">Tapjoy</span></td>
+              <td><span class="fit-check">✓ Retention</span><span class="sub">Daily rewards</span></td>
+              <td><span class="fit-check">✓ Payer</span><span class="sub">+ retention</span></td>
+              <td><span class="fit-partial">Partial</span><span class="sub">Volume only</span></td>
+              <td><span class="fit-check">✓ Payer</span><span class="sub">Event-based</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="case-study-card fade-up">
+        <div class="cs-name">Voodoo — D28 + rewarded scaling</div>
+        <div class="cs-metrics">Top UA channels include Unity on <strong>D28 campaigns</strong>; rewarded at ~5% SOV with a stated goal of 10%. Opportunity: grow rewarded SOV and lean into Hybrid ROAS as their hybrid-casual portfolio matures.</div>
+      </div>
+      <div class="case-study-card cyan fade-up">
+        <div class="cs-name">MagicLab — hybrid titles, &lt;10% Unity share</div>
+        <div class="cs-metrics">"That's My Seat" &amp; "Connect Master": Unity's share of UA spend is <strong>below 10%</strong>. Same creatives and profitability as AppLovin/Mintegral/Google/Meta — so the unlock is performance proof, not creative. Push Hybrid ROAS + SDK upgrade to earn share.</div>
+      </div>
+      <div class="case-study-card mag fade-up">
+        <div class="cs-name">Wargaming · Ludia · PocketGems · Grand Games</div>
+        <div class="cs-metrics">Active gaming accounts across midcore (Wargaming, Ludia INT/RV segmentation), live-service (PocketGems), and breakout hits (Grand Games "Block Out" scaling to <strong>$300K/day on iOS</strong>). Match each to the genre row above before the next QBR.</div>
+      </div>
+    </section>
+
+    <!-- ═══ 06 ROADMAP ═══ -->
+    <section id="roadmap">
+      <p class="section-label">LEVEL 06 · ROADMAP 2026</p>
+      <h2 class="section-title">WHAT'S<br><span>UNLOCKING.</span></h2>
+      <p class="section-sub">Where the gaming product is headed this year. Use the "LIVE" items as proof points today; tee up the alpha items with clients who'll want them first.</p>
+
+      <div class="road-grid fade-up">
+        <div class="road-q done">
+          <div class="road-q-label">Q1</div>
+          <span class="road-q-status">CLEARED ✓</span>
+          <ul>
+            <li>D28 IAP ROAS — live</li>
+            <li>Simplified ROAS onboarding</li>
+            <li>Multi-country budgeting</li>
+            <li>Creative cold-start opt.</li>
+          </ul>
+        </div>
+        <div class="road-q now">
+          <div class="road-q-label">Q2</div>
+          <span class="road-q-status">► YOU ARE HERE</span>
+          <ul>
+            <li>D28 Ad Revenue + Hybrid — live</li>
+            <li>CPE Retention updates</li>
+            <li>CPE Payer updates</li>
+          </ul>
+        </div>
+        <div class="road-q">
+          <div class="road-q-label">Q3</div>
+          <span class="road-q-status">ALPHA</span>
+          <ul>
+            <li>CPE Custom-event opt.</li>
+            <li>Creative optimization+</li>
+            <li>Advertiser Insights Agent</li>
+          </ul>
+        </div>
+        <div class="road-q">
+          <div class="road-q-label">Q4</div>
+          <span class="road-q-status">ALPHA</span>
+          <ul>
+            <li>GenAI creative generation</li>
+            <li>Creative Insights analytics</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 07 COMPETITOR WATCH ═══ -->
+    <section id="competitor">
+      <p class="section-label">LEVEL 07 · BOSS FIGHTS</p>
+      <h2 class="section-title">KNOW YOUR<br><span class="mag">ENEMY.</span></h2>
+      <p class="section-sub">The networks coming for our gaming clients. Know each one's move set before the call.</p>
+
+      <div class="comp-card fade-up">
+        <div class="comp-name">▸ AppLovin (MAX) — the final boss</div>
+        <div class="comp-detail">Default mediation for many studios. Feedback is mixed: clients gripe about <strong>weak support and postback issues</strong> (Atlas flagged this), but inertia is real — "happy on MAX, not looking to switch." Counter with LevelPlay support + Vector performance; don't attack creatives (clients run the same ones everywhere).</div>
+      </div>
+      <div class="comp-card fade-up">
+        <div class="comp-name">▸ Mintegral · Moloco · Google · Meta</div>
+        <div class="comp-detail">The standing UA roster on most hybrid/midcore accounts (per Voodoo, MagicLab). They hold share where Unity sits <strong>under 10%</strong>. Same creatives, same profitability — so win on ROAS proof, D28 windows, and SDK performance, not price.</div>
+      </div>
+      <div class="comp-card fade-up">
+        <div class="comp-name">▸ Liftoff — newly public ($3.83B)</div>
+        <div class="comp-detail">Liftoff IPO'd this week at <strong>$3.83B</strong> — expect more aggressive UA spend and a sharpened sales motion funded by public-market pressure. Watch performance-network accounts; they'll lean into machine-learning bidding parity.</div>
+      </div>
+      <div class="comp-card fade-up">
+        <div class="comp-name">▸ TikTok — fast-rising channel</div>
+        <div class="comp-detail">Now a <strong>top-3 channel</strong> for many advertisers, sometimes #2. Clients push rewarded + social traffic and increasingly want TikTok's SDK. Not a like-for-like network competitor, but it's taking budget share — frame Unity as the performance/ROAS engine TikTok isn't.</div>
+      </div>
+      <div class="comp-card fade-up">
+        <div class="comp-name">▸ Adjoe — offerwall threat</div>
+        <div class="comp-detail">140% YoY regional growth, just appointed a LATAM lead (June 9) and posted <strong>1000% YoY in South Korea</strong>. Direct overlap with Tapjoy Offerwall in incentive/rewarded. If a client runs incentive traffic, assume Adjoe is pitching them.</div>
+      </div>
+
+      <div class="card fade-up">
+        <h3>How to win the fight</h3>
+        <ul>
+          <li>Lead with <strong>Vector + D28 ROAS</strong> proof — it's the clearest performance story</li>
+          <li>On "competitor is cheaper / better ROAS" — anchor on the same creatives + clean MMP, not discounts</li>
+          <li>For sub-10% accounts (MagicLab), the unlock is share growth via SDK upgrade + Hybrid ROAS</li>
+          <li>Don't bad-mouth AppLovin — acknowledge support gaps and out-execute on attention</li>
+          <li>For incentive/rewarded clients, position Tapjoy directly against Adjoe</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section id="cta">
+      <div class="cta-title">GAME OVER?<br>CONTINUE...</div>
+      <div class="cta-sub">Got a client win or fresh intel? Drop it in <strong>#games-ad-monetization</strong> or ping Alon.</div>
+      <a class="cta-btn" href="mailto:alon.haliva@unity3d.com">▸ PRESS START</a>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer id="footer">
+      <span class="footer-tag">▸ GAMING PLAYBOOK</span>
+      <p class="footer-text">
+        Unity Ads · Gaming Vertical · June 2026<br>
+        Intel sourced from U-Know (Project Forge · Vector · Bold SDK) · #games-ad-monetization · #ow-weekly-competitor-review · #all-growth<br>
+        <a href="#hero">▲ Back to start</a> · <a href="#">Non-gaming playbook →</a>
+      </p>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  // ─── SCROLL PROGRESS ───
+  function updateProgress() {
+    var scrolled = window.scrollY;
+    var total = document.body.scrollHeight - window.innerHeight;
+    var pct = total > 0 ? (scrolled / total) * 100 : 0;
+    var fill = document.getElementById('rail-fill');
+    var topFill = document.getElementById('top-progress-fill');
+    if (fill) fill.style.width = pct + '%';
+    if (topFill) topFill.style.width = pct + '%';
+  }
+
+  // ─── ACTIVE NAV ITEM ───
+  var sections = document.querySelectorAll('section[id]');
+  var navItems = document.querySelectorAll('.nav-item[data-section]');
+  var pills = document.querySelectorAll('.chapter-pill');
+
+  function updateNav() {
+    var scrollY = window.scrollY + 130;
+    var current = '';
+    sections.forEach(function(s) {
+      if (s.offsetTop <= scrollY) current = s.id;
+    });
+    navItems.forEach(function(item) {
+      item.classList.toggle('active', item.dataset.section === current);
+    });
+    pills.forEach(function(pill) {
+      var href = pill.getAttribute('href').slice(1);
+      pill.classList.toggle('active', href === current);
+    });
+  }
+
+  // ─── FADE UP ───
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('in-view'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+
+  window.addEventListener('scroll', function() { updateProgress(); updateNav(); }, { passive: true });
+  updateProgress(); updateNav();
+
+  // ─── STAGE TABS ───
+  function switchTab(btn, targetId) {
+    var container = btn.closest('.card');
+    container.querySelectorAll('.stage-tab').forEach(function(t) { t.classList.remove('active'); });
+    container.querySelectorAll('.stage').forEach(function(s) { s.classList.remove('active'); });
+    btn.classList.add('active');
+    var target = document.getElementById(targetId);
+    if (target) target.classList.add('active');
+  }
+</script>
+</body>
+</html>
