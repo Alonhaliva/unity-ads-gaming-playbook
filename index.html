@@ -6,7 +6,7 @@
   <title>Unity Ads — Gaming Playbook (June 2026) ▸ INSERT COIN</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <script>window.NEWSLETTER_GA_ID = "";</script>
   <script>
@@ -26,10 +26,10 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #11131a;
-      --bg2: #161922;
-      --panel: #181b24;
-      --panel-2: #1e222d;
+      --bg: #20242f;
+      --bg2: #262b38;
+      --panel: #272c39;
+      --panel-2: #2f3545;
       --green: #6fcf97;
       --green-dim: #3a6b50;
       --magenta: #a98fe0;
@@ -38,8 +38,8 @@
       --orange: #cf9b6a;
       --red: #cf7d7d;
       --purple: #4a4f63;
-      --ink: #e6e8f0;
-      --muted: #8b91a6;
+      --ink: #eef0f6;
+      --muted: #aab0c4;
       --grid: rgba(130,140,165,0.045);
       --rail-w: 244px;
       --content-max: 800px;
@@ -47,7 +47,7 @@
 
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'VT323', 'Courier New', monospace;
+      font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
       background: var(--bg);
       background-image:
         radial-gradient(circle at 15% 6%, rgba(111,207,151,0.05), transparent 45%),
@@ -57,10 +57,10 @@
       background-size: auto, auto, 44px 44px, 44px 44px;
       color: var(--ink);
       overflow-x: hidden;
-      font-size: 19px;
-      line-height: 1.45;
-      -webkit-font-smoothing: none;
-      image-rendering: pixelated;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     /* ─── CRT SCANLINE OVERLAY ─── */
@@ -93,11 +93,11 @@
       box-shadow: 0 4px 0 rgba(0,0,0,0.5);
       padding: 12px 14px 9px;
     }
-    #top-progress-track { height: 10px; background: #20242f; border: 2px solid #2a2f3d; margin-bottom: 10px; image-rendering: pixelated; }
+    #top-progress-track { height: 10px; background: #3d4456; border: 2px solid #3d4456; margin-bottom: 10px; image-rendering: pixelated; }
     #top-progress-fill { height: 100%; width: 0%; background: var(--green); transition: width 0.2s steps(20); }
     #chapter-pills { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
     #chapter-pills::-webkit-scrollbar { display: none; }
-    .chapter-pill { flex-shrink: 0; font-family: 'Press Start 2P', monospace; font-size: 8px; padding: 7px 9px; background: #1e222d; border: 2px solid #2a2f3d; color: var(--cyan); text-decoration: none; }
+    .chapter-pill { flex-shrink: 0; font-family: 'Press Start 2P', monospace; font-size: 8px; padding: 7px 9px; background: #1e222d; border: 2px solid #3d4456; color: var(--cyan); text-decoration: none; }
     .chapter-pill.active { background: var(--magenta); color: #fff; border-color: var(--magenta); }
 
     /* ─── SHELL ─── */
@@ -136,7 +136,7 @@
     }
 
     .rail-hp-label { font-family:'Press Start 2P',monospace; font-size:7px; color:var(--muted); margin-bottom:5px; display:block; }
-    .rail-progress-track { height: 12px; background: #20242f; border: 2px solid #2a2f3d; margin-bottom: 22px; }
+    .rail-progress-track { height: 12px; background: #3d4456; border: 2px solid #3d4456; margin-bottom: 22px; }
     .rail-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--green), var(--cyan)); transition: width 0.3s steps(20); }
 
     .rail-nav { display: flex; flex-direction: column; gap: 3px; }
@@ -184,7 +184,7 @@
       text-shadow: 2px 2px 0 rgba(0,0,0,0.4);
     }
     h2.section-title span { color: var(--magenta); }
-    .section-sub { font-size: 20px; color: var(--muted); line-height: 1.4; margin-bottom: 28px; max-width: 600px; }
+    .section-sub { font-size: 16px; color: var(--muted); line-height: 1.4; margin-bottom: 28px; max-width: 600px; }
 
     /* ─── HERO ─── */
     #hero { padding-top: 8px; }
@@ -215,13 +215,13 @@
     .hero-perf-label { font-family:'Press Start 2P',monospace; font-size: 8px; color: var(--muted); }
     .hero-perf-badge { font-family:'Press Start 2P',monospace; font-size: 7px; color: #04210a; background: var(--green); padding: 5px 7px; box-shadow: 2px 2px 0 #000; }
     .hero-perf-3stat { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
-    .hero-perf-3stat-item { background: var(--bg); border: 2px solid #2a2f3d; padding: 10px 6px; text-align: center; }
+    .hero-perf-3stat-item { background: var(--bg); border: 2px solid #3d4456; padding: 10px 6px; text-align: center; }
     .hero-perf-3stat-val { font-size: 34px; line-height:1; color: var(--green); display: block; }
     .hero-perf-3stat-lbl { font-family:'Press Start 2P',monospace; font-size: 6px; color: var(--muted); margin-top: 7px; display:block; line-height:1.5; }
-    .hero-perf-divider { border: none; border-top: 2px dashed #2a2f3d; }
+    .hero-perf-divider { border: none; border-top: 2px dashed #3d4456; }
     .hero-perf-note { font-size: 17px; color: var(--muted); line-height: 1.35; }
 
-    .hero-body { font-size: 21px; line-height: 1.55; color: var(--ink); max-width: 640px; margin-bottom: 20px; }
+    .hero-body { font-size: 17px; line-height: 1.55; color: var(--ink); max-width: 640px; margin-bottom: 20px; }
     .hero-body strong { color: var(--green); }
 
     .press-start { font-family:'Press Start 2P',monospace; font-size: 11px; color: var(--yellow); animation: blink 1.8s steps(2) infinite; margin-bottom: 26px; }
@@ -230,9 +230,9 @@
 
     /* ─── AT A GLANCE VISUAL GRID ─── */
     .glance-visual-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .gv-card { background: var(--panel); border: 3px solid #2a2f3d; box-shadow: 5px 5px 0 #000; overflow: hidden; text-decoration: none; display: block; transition: transform 0.1s steps(2), box-shadow 0.1s steps(2), border-color 0.1s; }
+    .gv-card { background: var(--panel); border: 3px solid #3d4456; box-shadow: 5px 5px 0 #000; overflow: hidden; text-decoration: none; display: block; transition: transform 0.1s steps(2), box-shadow 0.1s steps(2), border-color 0.1s; }
     .gv-card:hover { transform: translate(-3px,-3px); box-shadow: 8px 8px 0 var(--magenta); border-color: var(--magenta); }
-    .gv-thumb { height: 104px; overflow: hidden; border-bottom: 3px solid #2a2f3d; }
+    .gv-thumb { height: 104px; overflow: hidden; border-bottom: 3px solid #3d4456; }
     .gv-thumb svg { display: block; width: 100%; height: 100%; }
     .gv-body { padding: 12px 13px 14px; }
     .gv-num { font-family:'Press Start 2P',monospace; font-size: 7px; color: var(--purple); margin-bottom: 8px; }
@@ -249,14 +249,14 @@
     /* ─── CARD BASE ─── */
     .card {
       background: var(--panel);
-      border: 3px solid #2a2f3d;
+      border: 3px solid #3d4456;
       box-shadow: 5px 5px 0 #000;
       padding: 22px 24px;
       margin-bottom: 18px;
     }
     .card h3 { font-family:'Press Start 2P',monospace; font-size: 11px; color: var(--cyan); margin-bottom: 14px; line-height:1.5; }
-    .card p { font-size: 19px; line-height: 1.5; color: var(--ink); }
-    .card ul { font-size: 19px; color: var(--ink); line-height: 1.7; padding-left: 22px; }
+    .card p { font-size: 16px; line-height: 1.5; color: var(--ink); }
+    .card ul { font-size: 16px; color: var(--ink); line-height: 1.7; padding-left: 22px; }
     .card ul li::marker { content: "▸ "; color: var(--green); }
     .card em { color: var(--yellow); font-style: normal; }
     .card strong { color: var(--green); }
@@ -273,7 +273,7 @@
 
     /* ─── GENRE / SUB CARD ─── */
     .subvert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
-    .subvert-card { background: var(--panel); border: 3px solid #2a2f3d; box-shadow: 4px 4px 0 #000; padding: 16px 18px; transition: border-color .12s, transform .1s steps(2); }
+    .subvert-card { background: var(--panel); border: 3px solid #3d4456; box-shadow: 4px 4px 0 #000; padding: 16px 18px; transition: border-color .12s, transform .1s steps(2); }
     .subvert-card:hover { border-color: var(--cyan); transform: translate(-2px,-2px); }
     .subvert-icon { font-size: 30px; margin-bottom: 10px; }
     .subvert-title { font-family:'Press Start 2P',monospace; font-size: 11px; color: var(--ink); margin-bottom: 10px; line-height:1.4; }
@@ -294,13 +294,13 @@
     .case-study-card.mag { border-left-color: var(--magenta); }
     .case-study-card.yellow { border-left-color: var(--yellow); }
     .cs-name { font-family:'Press Start 2P',monospace; font-size: 11px; color: var(--ink); margin-bottom: 12px; line-height:1.5; }
-    .cs-metrics { font-size: 19px; color: var(--muted); line-height: 1.5; }
+    .cs-metrics { font-size: 16px; color: var(--muted); line-height: 1.5; }
     .cs-metrics strong { color: var(--green); }
 
     /* ─── PRODUCT FIT TABLE ─── */
     .fit-table { width: 100%; border-collapse: collapse; font-size: 17px; margin-top: 14px; }
     .fit-table th { text-align: left; font-family:'Press Start 2P',monospace; font-size: 7px; color: var(--cyan); padding: 10px 8px; border-bottom: 3px solid var(--purple); line-height:1.5; }
-    .fit-table td { padding: 11px 8px; border-bottom: 2px solid #20242f; color: var(--ink); vertical-align: top; }
+    .fit-table td { padding: 11px 8px; border-bottom: 2px solid #3d4456; color: var(--ink); vertical-align: top; }
     .fit-table tr:last-child td { border-bottom: none; }
     .fit-table td strong { color: var(--ink); }
     .fit-table td .sub { color: var(--muted); font-size: 15px; display:block; }
@@ -321,7 +321,7 @@
 
     /* ─── ROADMAP TIMELINE ─── */
     .road-grid { display:grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: 16px; }
-    .road-q { background: var(--panel); border: 3px solid #2a2f3d; box-shadow:4px 4px 0 #000; padding: 14px 12px; }
+    .road-q { background: var(--panel); border: 3px solid #3d4456; box-shadow:4px 4px 0 #000; padding: 14px 12px; }
     .road-q.done { border-color: var(--green); }
     .road-q.now { border-color: var(--magenta); }
     .road-q-label { font-family:'Press Start 2P',monospace; font-size: 9px; color: var(--cyan); margin-bottom:4px; }
@@ -338,7 +338,7 @@
     .stage-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
     .stage-tab {
       font-family:'Press Start 2P',monospace; font-size: 8px; padding: 8px 11px;
-      background: var(--bg); border: 2px solid #2a2f3d;
+      background: var(--bg); border: 2px solid #3d4456;
       color: var(--muted); cursor: pointer; transition: all 0.1s;
     }
     .stage-tab:hover { color: var(--ink); }
@@ -347,7 +347,7 @@
     /* ─── CTA ─── */
     #cta { text-align: center; padding: 36px 20px 56px; }
     .cta-title { font-family:'Press Start 2P',monospace; font-size: 18px; color: var(--ink); margin-bottom: 16px; line-height:1.6; text-shadow:3px 3px 0 #000; }
-    .cta-sub { font-size: 20px; color: var(--muted); margin-bottom: 24px; }
+    .cta-sub { font-size: 16px; color: var(--muted); margin-bottom: 24px; }
     .cta-sub strong { color: var(--cyan); }
     .cta-btn {
       display: inline-block; font-family:'Press Start 2P',monospace; font-size: 11px;
@@ -380,9 +380,21 @@
     @media (max-width: 480px) {
       .glance-visual-grid { grid-template-columns: 1fr; }
       .road-grid { grid-template-columns: 1fr; }
-      .hero-title { font-size: 21px; }
+      .hero-title { font-size: 17px; }
       body { font-size: 18px; }
     }
+
+    /* ─── READABILITY TWEAKS ─── */
+    .hero-body, .section-sub, .card p, .card ul, .cs-metrics, .comp-detail,
+    .gap-alert-body, .subvert-note, .hero-perf-note, .fit-table, .footer-text,
+    .road-q ul, .cta-sub { letter-spacing: 0.005em; }
+    .stat-val { font-weight: 700; letter-spacing: -0.01em; }
+    .hero-perf-3stat-val { font-weight: 700; }
+    .gv-title { font-weight: 600; }
+    .nav-label { font-weight: 500; }
+    .cs-metrics strong, .comp-detail strong, .card strong, .hero-body strong { font-weight: 600; }
+    /* keep pixel-font elements crisp */
+    .px, [style*="Press Start"] { letter-spacing: 0; }
   </style>
 </head>
 <body>
@@ -471,11 +483,11 @@
             <!-- ground grid -->
             <rect x="0" y="186" width="600" height="54" fill="#1e222d"/>
             <rect x="0" y="186" width="600" height="3" fill="#6d6f86"/>
-            <line x1="60" y1="189" x2="-40" y2="240" stroke="#2a2f3d" stroke-width="2"/>
-            <line x1="180" y1="189" x2="140" y2="240" stroke="#2a2f3d" stroke-width="2"/>
-            <line x1="300" y1="189" x2="300" y2="240" stroke="#2a2f3d" stroke-width="2"/>
-            <line x1="420" y1="189" x2="460" y2="240" stroke="#2a2f3d" stroke-width="2"/>
-            <line x1="540" y1="189" x2="640" y2="240" stroke="#2a2f3d" stroke-width="2"/>
+            <line x1="60" y1="189" x2="-40" y2="240" stroke="#3d4456" stroke-width="2"/>
+            <line x1="180" y1="189" x2="140" y2="240" stroke="#3d4456" stroke-width="2"/>
+            <line x1="300" y1="189" x2="300" y2="240" stroke="#3d4456" stroke-width="2"/>
+            <line x1="420" y1="189" x2="460" y2="240" stroke="#3d4456" stroke-width="2"/>
+            <line x1="540" y1="189" x2="640" y2="240" stroke="#3d4456" stroke-width="2"/>
             <!-- ascending ROAS bars (coins) -->
             <rect x="70" y="150" width="40" height="36" fill="#6fcf97"/>
             <rect x="124" y="120" width="40" height="66" fill="#6fcf97"/>
@@ -649,11 +661,11 @@
           <div class="gv-thumb">
             <svg viewBox="0 0 240 104" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
               <rect width="240" height="104" fill="#161922"/>
-              <rect x="20" y="50" width="200" height="6" fill="#2a2f3d"/>
+              <rect x="20" y="50" width="200" height="6" fill="#3d4456"/>
               <rect x="36" y="44" width="16" height="16" fill="#6fcf97"/>
               <rect x="92" y="44" width="16" height="16" fill="#6fcf97"/>
               <rect x="148" y="44" width="16" height="16" fill="#a98fe0"/>
-              <rect x="200" y="44" width="16" height="16" fill="#2a2f3d"/>
+              <rect x="200" y="44" width="16" height="16" fill="#3d4456"/>
               <text x="44" y="80" font-family="'Press Start 2P',monospace" font-size="7" fill="#6fcf97" text-anchor="middle">Q1</text>
               <text x="100" y="80" font-family="'Press Start 2P',monospace" font-size="7" fill="#6fcf97" text-anchor="middle">Q2</text>
               <text x="156" y="80" font-family="'Press Start 2P',monospace" font-size="7" fill="#a98fe0" text-anchor="middle">Q3</text>
